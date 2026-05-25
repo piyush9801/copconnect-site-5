@@ -20,14 +20,11 @@ export default function Footer() {
     <footer className="bg-ink text-white px-4 sm:px-6 lg:px-8 pt-20 pb-9">
       <div className="max-w-[1320px] mx-auto grid grid-cols-1 md:grid-cols-[2.2fr_1fr_1fr_1fr] gap-10 md:gap-12">
         <div>
-          <div className="flex items-center gap-3">
-            <img
-              src="https://copconnect-new-site.vercel.app/images/copconnect-logo.png"
-              alt="CopConnect"
-              className="h-10 w-auto brightness-0 invert"
-            />
-            <span className="font-serif font-bold text-xl">Cop<span className="text-brand-mid">Connect</span></span>
-          </div>
+          <img
+            src="https://copconnect-new-site.vercel.app/images/copconnect-logo.png"
+            alt="CopConnect"
+            className="h-12 w-auto brightness-0 invert"
+          />
           <p className="text-white/40 text-sm leading-relaxed mt-4 max-w-sm">
             Bridging the gap between cyber victims and law enforcement. Building a culture of cyber safety, one community at a time.
           </p>
