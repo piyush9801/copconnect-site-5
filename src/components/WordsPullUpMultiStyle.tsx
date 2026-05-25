@@ -19,7 +19,7 @@ export default function WordsPullUpMultiStyle({ segments, className = '' }: Prop
   return (
     <div ref={ref} className={`inline-flex flex-wrap justify-center ${className}`}>
       {allWords.map(({ word, className: wc, key }, i) => (
-        <span key={key} className="overflow-hidden inline-block mr-[0.22em] last:mr-0 pb-[0.18em]">
+        <span key={key} className="overflow-hidden inline-block mr-[0.22em] last:mr-0 pb-[0.32em]">
           <motion.span
             className={`inline-block ${wc}`}
             initial={{ y: 28, opacity: 0 }}
