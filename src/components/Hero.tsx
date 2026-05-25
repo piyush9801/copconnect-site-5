@@ -2,8 +2,6 @@ import { motion } from 'framer-motion'
 import { ArrowRight, ShieldCheck, BookOpen, Users } from 'lucide-react'
 import WordsPullUp from './WordsPullUp'
 
-const NAV = ['About', 'Platform', 'Learning', 'Safety Tips', 'Resources']
-
 type Warning = {
   title: string
   body: string
@@ -94,22 +92,26 @@ export default function Hero() {
     <section id="home" className="bg-cream relative overflow-hidden">
       {/* Top nav */}
       <nav className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between gap-4">
-        <a href="#home" className="flex items-center gap-3 shrink-0">
+        <a href="#home" className="flex items-center shrink-0">
           <img
             src="https://copconnect-new-site.vercel.app/images/copconnect-logo.png"
             alt="CopConnect"
-            className="h-10 sm:h-12 w-auto"
+            className="h-12 sm:h-14 w-auto"
           />
-          <span className="hidden sm:flex flex-col leading-tight">
-            <span className="font-serif font-bold text-base sm:text-lg text-ink">CopConnect</span>
-            <span className="text-[10px] sm:text-[11px] text-muted">Bridging the Gap in Cyber Justice</span>
-          </span>
         </a>
         <div className="hidden lg:flex items-center gap-1">
-          {NAV.map((label) => (
+          {[
+            { label: 'About', href: '#about' },
+            { label: 'Platform', href: '#platform' },
+            { label: 'Learning', href: '#learning' },
+            { label: 'CCIO', href: '#ccio' },
+            { label: 'Safety Tips', href: '#tips' },
+            { label: 'Merch', href: '#merch' },
+            { label: 'Sessions', href: '#sessions' },
+          ].map(({ label, href }) => (
             <a
               key={label}
-              href="#about"
+              href={href}
               className="text-sm font-medium text-ink-mid hover:text-brand transition-colors px-3 py-2 rounded-full"
             >
               {label}
