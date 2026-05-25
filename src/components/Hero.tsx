@@ -1,5 +1,20 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, ShieldCheck, BookOpen, Users } from 'lucide-react'
+import {
+  ArrowRight,
+  ShieldCheck,
+  BookOpen,
+  Users,
+  AlertTriangle,
+  Lock,
+  Gift,
+  HelpCircle,
+  AlertCircle,
+  Phone,
+  MapPin,
+  Map,
+  Globe,
+  type LucideIcon,
+} from 'lucide-react'
 import WordsPullUp from './WordsPullUp'
 
 type Warning = {
@@ -8,7 +23,7 @@ type Warning = {
   position: string
   delay: number
   float: 'float-1' | 'float-2' | 'float-3'
-  icon: string
+  Ico: LucideIcon
 }
 
 const WARNINGS: Warning[] = [
@@ -18,7 +33,7 @@ const WARNINGS: Warning[] = [
     position: 'top-[8%] -left-2 sm:left-2',
     delay: 0.6,
     float: 'float-1',
-    icon: '!',
+    Ico: AlertTriangle,
   },
   {
     title: 'OTP Alert',
@@ -26,7 +41,7 @@ const WARNINGS: Warning[] = [
     position: 'top-[12%] right-0 sm:right-4',
     delay: 0.8,
     float: 'float-2',
-    icon: '🔒',
+    Ico: Lock,
   },
   {
     title: 'WIN iPHONE 15',
@@ -34,7 +49,7 @@ const WARNINGS: Warning[] = [
     position: 'top-[42%] -left-2 sm:left-4',
     delay: 1.0,
     float: 'float-3',
-    icon: '🎁',
+    Ico: Gift,
   },
   {
     title: 'Fake Support',
@@ -42,7 +57,7 @@ const WARNINGS: Warning[] = [
     position: 'top-[40%] right-0 sm:right-2',
     delay: 1.2,
     float: 'float-1',
-    icon: '?',
+    Ico: HelpCircle,
   },
   {
     title: 'Suspicious Login',
@@ -50,7 +65,7 @@ const WARNINGS: Warning[] = [
     position: 'bottom-[12%] -left-2 sm:left-2',
     delay: 1.4,
     float: 'float-2',
-    icon: '!',
+    Ico: AlertCircle,
   },
   {
     title: 'Scam Call',
@@ -58,7 +73,7 @@ const WARNINGS: Warning[] = [
     position: 'bottom-[18%] right-0 sm:right-4',
     delay: 1.6,
     float: 'float-3',
-    icon: '☎',
+    Ico: Phone,
   },
 ]
 
@@ -80,11 +95,11 @@ const MINI_FEATURES = [
   },
 ]
 
-const STATS = [
-  { n: '1,446+', l: 'Communities Reached', icon: '👥' },
-  { n: '25K+', l: 'Safety Sessions Conducted', icon: '📖' },
-  { n: '1,000+', l: 'Reports Supported', icon: '🛡️' },
-  { n: '21+', l: 'States Impacted', icon: '🗺️' },
+const STATS: { n: string; l: string; Ico: LucideIcon }[] = [
+  { n: '1,446+', l: 'Communities Reached', Ico: Users },
+  { n: '25K+', l: 'Safety Sessions Conducted', Ico: BookOpen },
+  { n: '1,000+', l: 'Reports Supported', Ico: ShieldCheck },
+  { n: '21+', l: 'States Impacted', Ico: Map },
 ]
 
 export default function Hero() {
@@ -158,7 +173,7 @@ export default function Hero() {
               >
                 <div className={`${w.float} bg-white/90 backdrop-blur-sm border border-white/60 rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.18)] px-3 py-2 max-w-[180px] sm:max-w-[200px]`}>
                   <div className="flex items-start gap-2">
-                    <span className="text-brand text-sm leading-none mt-0.5 flex-shrink-0">{w.icon}</span>
+                    <w.Ico className="w-4 h-4 text-brand flex-shrink-0 mt-0.5" strokeWidth={1.8} />
                     <div className="min-w-0">
                       <div className="font-bold text-[11px] sm:text-xs text-ink leading-tight">{w.title}</div>
                       <div className="text-[10px] sm:text-[11px] text-muted leading-snug mt-0.5">{w.body}</div>
@@ -261,19 +276,21 @@ export default function Hero() {
             </div>
             <div className="mt-3 h-0.5 w-12 bg-brand rounded-full" />
           </div>
-          {STATS.map((s) => (
-            <div key={s.l} className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-full bg-cream flex items-center justify-center flex-shrink-0 text-lg">
-                {s.icon}
+          {STATS.map(({ n, l, Ico }) => (
+            <div key={l} className="flex items-center gap-3">
+              <div className="w-11 h-11 rounded-full bg-cream flex items-center justify-center flex-shrink-0">
+                <Ico className="w-5 h-5 text-brand" strokeWidth={1.7} />
               </div>
               <div className="min-w-0">
-                <div className="font-serif font-bold text-xl sm:text-2xl text-ink leading-none">{s.n}</div>
-                <div className="text-[10px] sm:text-[11px] text-muted leading-tight mt-1">{s.l}</div>
+                <div className="font-serif font-bold text-xl sm:text-2xl text-ink leading-none">{n}</div>
+                <div className="text-[10px] sm:text-[11px] text-muted leading-tight mt-1">{l}</div>
               </div>
             </div>
           ))}
           <div className="flex items-center gap-3 md:justify-end md:border-l md:border-border md:pl-5">
-            <div className="text-2xl">🇮🇳</div>
+            <div className="w-11 h-11 rounded-full bg-cream flex items-center justify-center flex-shrink-0">
+              <MapPin className="w-5 h-5 text-brand" strokeWidth={1.7} />
+            </div>
             <div className="min-w-0">
               <div className="font-bold text-sm text-ink leading-tight">Active across India</div>
               <div className="text-[11px] text-muted leading-snug flex items-center gap-1.5 mt-0.5">

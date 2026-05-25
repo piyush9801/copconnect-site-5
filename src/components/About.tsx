@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { useScroll } from 'framer-motion'
+import { GraduationCap, Building2, Home, Siren } from 'lucide-react'
 import WordsPullUpMultiStyle from './WordsPullUpMultiStyle'
 import AnimatedLetter from './AnimatedLetter'
 
@@ -7,10 +8,10 @@ const BODY_TEXT =
   "Over the last seven years, CopConnect has trained 1,000+ Cyber Community Intelligence Officers, run 222+ awareness sessions, and intervened in 1,446+ cyber incidents across India. Together with ISAC Foundation, we have reached over 2 lakh citizens — and we are only getting started."
 
 const PILLARS = [
-  { ico: '🏫', title: 'Schools', desc: 'Safe internet habits for every student age 6 to 18.' },
-  { ico: '🏢', title: 'Corporates', desc: 'Employee cyber hygiene and fraud prevention at scale.' },
-  { ico: '🏘️', title: 'RWAs', desc: 'Senior citizens and households protected from scams.' },
-  { ico: '🚓', title: 'Law Enforcement', desc: 'Direct bridges between citizens and cyber crime cells.' },
+  { Ico: GraduationCap, title: 'Schools', desc: 'Safe internet habits for every student age 6 to 18.' },
+  { Ico: Building2, title: 'Corporates', desc: 'Employee cyber hygiene and fraud prevention at scale.' },
+  { Ico: Home, title: 'RWAs', desc: 'Senior citizens and households protected from scams.' },
+  { Ico: Siren, title: 'Law Enforcement', desc: 'Direct bridges between citizens and cyber crime cells.' },
 ]
 
 export default function About() {
@@ -62,14 +63,14 @@ export default function About() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mt-14 md:mt-20">
-          {PILLARS.map((p) => (
+          {PILLARS.map(({ Ico, title, desc }) => (
             <div
-              key={p.title}
+              key={title}
               className="bg-cream border border-border rounded-2xl p-6 sm:p-7 hover:bg-brand-pale hover:border-brand-lt transition-colors"
             >
-              <div className="text-3xl mb-3">{p.ico}</div>
-              <div className="font-serif font-semibold text-lg text-ink mb-1.5">{p.title}</div>
-              <div className="text-sm text-muted leading-snug">{p.desc}</div>
+              <Ico className="w-7 h-7 text-brand mb-3" strokeWidth={1.6} />
+              <div className="font-serif font-semibold text-lg text-ink mb-1.5">{title}</div>
+              <div className="text-sm text-muted leading-snug">{desc}</div>
             </div>
           ))}
         </div>

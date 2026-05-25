@@ -1,3 +1,5 @@
+import { Twitter, Linkedin, Facebook, Instagram, Youtube, ShieldCheck, type LucideIcon } from 'lucide-react'
+
 const COLS = [
   {
     h: 'Platform',
@@ -13,7 +15,13 @@ const COLS = [
   },
 ]
 
-const SOCIAL = ['𝕏', 'in', 'f', '📸', '▶']
+const SOCIAL: { Ico: LucideIcon; label: string }[] = [
+  { Ico: Twitter, label: 'Twitter' },
+  { Ico: Linkedin, label: 'LinkedIn' },
+  { Ico: Facebook, label: 'Facebook' },
+  { Ico: Instagram, label: 'Instagram' },
+  { Ico: Youtube, label: 'YouTube' },
+]
 
 export default function Footer() {
   return (
@@ -33,13 +41,14 @@ export default function Footer() {
             Cyber Crime Helpline: <b className="text-brand-mid">1930</b>
           </p>
           <div className="flex gap-2.5 mt-5">
-            {SOCIAL.map((s, i) => (
+            {SOCIAL.map(({ Ico, label }) => (
               <a
-                key={i}
+                key={label}
                 href="#"
-                className="w-9 h-9 bg-white/[0.07] rounded-lg flex items-center justify-center text-white/50 text-sm hover:bg-brand hover:text-white transition-all"
+                aria-label={label}
+                className="w-9 h-9 bg-white/[0.07] rounded-lg flex items-center justify-center text-white/50 hover:bg-brand hover:text-white transition-all"
               >
-                {s}
+                <Ico className="w-4 h-4" strokeWidth={1.8} />
               </a>
             ))}
           </div>
@@ -61,7 +70,10 @@ export default function Footer() {
 
       <div className="max-w-[1320px] mx-auto mt-12 pt-7 border-t border-white/8 flex flex-wrap justify-between gap-3">
         <p className="text-white/28 text-xs">© 2026 CopConnect / ISAC Foundation. All rights reserved.</p>
-        <p className="text-white/28 text-xs">Resilience begins with awareness. 🛡️</p>
+        <p className="text-white/28 text-xs inline-flex items-center gap-1.5">
+          Resilience begins with awareness.
+          <ShieldCheck className="w-3.5 h-3.5" strokeWidth={1.8} />
+        </p>
       </div>
     </footer>
   )

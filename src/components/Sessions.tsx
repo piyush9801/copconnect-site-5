@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Building2, GraduationCap, Home, Globe, Lock, type LucideIcon } from 'lucide-react'
 import { useState } from 'react'
 
-const VENUES = [
-  { ico: '🏢', title: 'Corporate', desc: 'Employee cyber hygiene & fraud prevention' },
-  { ico: '🏫', title: 'School / College', desc: 'Student safety, social media, cyberbullying' },
-  { ico: '🏘️', title: 'RWA / Housing Society', desc: 'Senior scam prevention, UPI fraud, home safety' },
-  { ico: '🌐', title: 'Other / NGO / Govt', desc: 'Custom sessions for any community' },
+const VENUES: { Ico: LucideIcon; title: string; desc: string }[] = [
+  { Ico: Building2, title: 'Corporate', desc: 'Employee cyber hygiene & fraud prevention' },
+  { Ico: GraduationCap, title: 'School / College', desc: 'Student safety, social media, cyberbullying' },
+  { Ico: Home, title: 'RWA / Housing Society', desc: 'Senior scam prevention, UPI fraud, home safety' },
+  { Ico: Globe, title: 'Other / NGO / Govt', desc: 'Custom sessions for any community' },
 ]
 
 export default function Sessions() {
@@ -32,9 +32,9 @@ export default function Sessions() {
         </motion.div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-12">
-          {VENUES.map((v, i) => (
+          {VENUES.map(({ Ico, title, desc }, i) => (
             <button
-              key={v.title}
+              key={title}
               onClick={() => setVenue(i)}
               className={`text-left rounded-2xl p-5 sm:p-6 transition-all ${
                 venue === i
@@ -42,9 +42,9 @@ export default function Sessions() {
                   : 'bg-white border-2 border-border hover:border-brand-lt'
               }`}
             >
-              <div className="text-2xl mb-2.5">{v.ico}</div>
-              <h4 className="font-bold text-sm sm:text-base text-ink mb-1">{v.title}</h4>
-              <p className="text-xs text-muted leading-snug">{v.desc}</p>
+              <Ico className="w-6 h-6 text-brand mb-2.5" strokeWidth={1.7} />
+              <h4 className="font-bold text-sm sm:text-base text-ink mb-1">{title}</h4>
+              <p className="text-xs text-muted leading-snug">{desc}</p>
             </button>
           ))}
         </div>
@@ -105,8 +105,9 @@ export default function Sessions() {
             Submit Session Request
             <ArrowRight className="w-5 h-5" />
           </button>
-          <p className="text-xs text-muted mt-4">
-            🔒 Your information is secure. Sessions are subsidised for schools and NGOs.
+          <p className="text-xs text-muted mt-4 inline-flex items-center gap-1.5">
+            <Lock className="w-3.5 h-3.5 text-muted" strokeWidth={1.8} />
+            Your information is secure. Sessions are subsidised for schools and NGOs.
           </p>
         </motion.form>
       </div>
