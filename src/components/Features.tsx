@@ -6,15 +6,13 @@ import WordsPullUpMultiStyle from './WordsPullUpMultiStyle'
 type Item = {
   num: string
   title: string
-  icon: string
   bullets: string[]
 }
 
 const ITEMS: Item[] = [
   {
     num: '01',
-    title: 'Incident Reporting.',
-    icon: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=200&h=200&fit=crop&auto=format&q=80',
+    title: 'Incident Reporting',
     bullets: [
       'Report cyber crimes in under 60 seconds.',
       'Track your case with real-time updates.',
@@ -24,8 +22,7 @@ const ITEMS: Item[] = [
   },
   {
     num: '02',
-    title: 'CCIO Directory.',
-    icon: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=200&h=200&fit=crop&auto=format&q=80',
+    title: 'CCIO Directory',
     bullets: [
       '1,000+ trained CCIOs across India.',
       'Find your nearest officer by pincode.',
@@ -34,8 +31,7 @@ const ITEMS: Item[] = [
   },
   {
     num: '03',
-    title: 'Family Safety Mode.',
-    icon: 'https://images.unsplash.com/photo-1607706189992-eae578626c86?w=200&h=200&fit=crop&auto=format&q=80',
+    title: 'Family Safety Mode',
     bullets: [
       'Unified dashboard for parents and kids.',
       'Set boundaries together, not in secret.',
@@ -44,7 +40,7 @@ const ITEMS: Item[] = [
   },
 ]
 
-function MissionCard({ index }: { index: number }) {
+function HeroCard({ index }: { index: number }) {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -53,28 +49,27 @@ function MissionCard({ index }: { index: number }) {
       ref={ref}
       initial={{ opacity: 0, scale: 0.95 }}
       animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.7, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-      className="relative rounded-2xl overflow-hidden flex flex-col justify-end min-h-[300px] lg:min-h-0"
+      transition={{ duration: 0.7, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+      className="relative rounded-3xl overflow-hidden flex flex-col justify-end min-h-[340px] lg:min-h-0 bg-ink"
     >
-      <motion.img
+      <img
         src="https://copconnect-new-site.vercel.app/images/hero.png"
         alt=""
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1.2 }}
-        transition={{ duration: 18, ease: 'linear' }}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover opacity-85"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
-      <div className="relative p-6 md:p-7">
-        <div className="text-brand text-[10px] sm:text-xs uppercase tracking-[0.2em] mb-2">
-          The Mission
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/40 to-transparent" />
+      <div className="relative p-7">
+        <div className="text-brand-mid text-xs uppercase tracking-[0.15em] font-bold mb-2">
+          The mission
         </div>
-        <h3
-          className="text-xl sm:text-2xl font-medium leading-tight"
-          style={{ color: '#E1E0CC' }}
-        >
-          Your creative canvas for cyber safety.
+        <h3 className="font-serif text-2xl sm:text-3xl text-white leading-tight">
+          One platform.
+          <br />
+          <span className="italic text-brand-mid">Every community.</span>
         </h3>
+        <p className="text-white/70 text-sm mt-3 leading-relaxed max-w-[280px]">
+          The Scroll Control Platform connects citizens, CCIOs, and law enforcement in real time.
+        </p>
       </div>
     </motion.div>
   )
@@ -89,29 +84,24 @@ function FeatureCard({ item, index }: { item: Item; index: number }) {
       ref={ref}
       initial={{ opacity: 0, scale: 0.95 }}
       animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.7, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-      className="bg-[#212121] rounded-2xl p-6 md:p-7 flex flex-col min-h-[300px] lg:min-h-0"
+      transition={{ duration: 0.7, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
+      className="bg-white border border-border rounded-3xl p-7 flex flex-col min-h-[340px] lg:min-h-0 hover:shadow-[0_24px_50px_-24px_rgba(232,101,42,0.28)] hover:-translate-y-1.5 transition-all"
     >
-      <img
-        src={item.icon}
-        alt=""
-        className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg object-cover mb-6"
-      />
-      <div className="flex items-baseline gap-2 mb-1">
-        <h3 className="text-primary text-lg sm:text-xl font-medium">{item.title}</h3>
-      </div>
-      <div className="text-gray-500 text-xs mb-6">({item.num})</div>
+      <div className="font-serif text-4xl font-bold text-brand-lt leading-none mb-3">{item.num}</div>
+      <h3 className="font-serif text-xl sm:text-2xl text-ink leading-tight mb-4">{item.title}</h3>
       <ul className="space-y-2.5 flex-1">
         {item.bullets.map((b, i) => (
           <li key={i} className="flex items-start gap-2">
-            <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" strokeWidth={2} />
-            <span className="text-gray-400 text-[13px] leading-snug">{b}</span>
+            <span className="w-5 h-5 rounded-full bg-brand-pale flex items-center justify-center flex-shrink-0 mt-0.5">
+              <Check className="w-3 h-3 text-brand" strokeWidth={3} />
+            </span>
+            <span className="text-muted text-sm leading-snug">{b}</span>
           </li>
         ))}
       </ul>
       <a
         href="#"
-        className="text-primary text-sm mt-6 inline-flex items-center gap-2 group"
+        className="text-brand font-semibold text-sm mt-6 inline-flex items-center gap-2 group"
       >
         Learn more
         <ArrowRight className="w-4 h-4 -rotate-45 group-hover:rotate-0 transition-transform" />
@@ -122,30 +112,27 @@ function FeatureCard({ item, index }: { item: Item; index: number }) {
 
 export default function Features() {
   return (
-    <section className="relative min-h-screen bg-black px-4 md:px-6 py-20 md:py-32">
-      <div className="absolute inset-0 bg-noise opacity-[0.15] pointer-events-none" />
-      <div className="relative max-w-7xl mx-auto">
-        <div className="text-center mb-12 md:mb-20">
-          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal leading-tight">
+    <section id="features" className="bg-cream px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+      <div className="max-w-[1320px] mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
+          <div className="text-brand text-xs font-bold uppercase tracking-[0.15em] mb-4">
+            Digital Platform
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-[1.05]">
             <WordsPullUpMultiStyle
               segments={[
-                { text: 'Grassroots workflows', className: 'text-primary' },
-                { text: 'for visionary citizens.', className: 'italic font-serif text-primary' },
+                { text: 'Grassroots workflows', className: 'text-ink' },
+                { text: 'for visionary citizens.', className: 'text-brand italic' },
               ]}
             />
-          </div>
-          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal leading-tight mt-2">
-            <WordsPullUpMultiStyle
-              segments={[
-                { text: 'Built for pure safety.', className: 'text-gray-500' },
-                { text: 'Powered by people.', className: 'italic font-serif text-gray-500' },
-              ]}
-            />
-          </div>
+          </h2>
+          <p className="text-ink-mid text-base sm:text-lg leading-relaxed mt-5 max-w-2xl mx-auto">
+            Built for pure safety. Powered by people. Every workflow we ship is shaped by victims, CCIOs, and the officers who answer the call.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:h-[480px]">
-          <MissionCard index={0} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:auto-rows-fr">
+          <HeroCard index={0} />
           {ITEMS.map((item, i) => (
             <FeatureCard key={item.num} item={item} index={i + 1} />
           ))}

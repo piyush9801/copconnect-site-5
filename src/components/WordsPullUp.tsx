@@ -39,7 +39,7 @@ export default function WordsPullUp({
             >
               {word}
               {showAsterisk && isLast && (
-                <span className="absolute top-[0.1em] -right-[0.35em] text-[0.31em] text-brand">
+                <span className="absolute top-[0.08em] -right-[0.05em] text-[0.32em] text-brand leading-none">
                   *
                 </span>
               )}

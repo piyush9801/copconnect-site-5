@@ -5,7 +5,7 @@ import FloatBot from './components/FloatBot'
 
 export default function App() {
   return (
-    <main className="bg-black text-primary">
+    <main className="bg-cream text-ink">
       <Hero />
       <About />
       <Features />

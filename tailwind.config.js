@@ -4,16 +4,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#DEDBC8',
+        cream: '#F5EFE6',
+        'cream-dark': '#EDE4D6',
         ink: '#1A1209',
         'ink-mid': '#3D2B1F',
+        muted: '#7A6A5A',
+        border: '#E8DDD0',
         brand: '#E8652A',
         'brand-mid': '#F0783A',
+        'brand-lt': '#FAD5C2',
         'brand-pale': '#FDF0E9',
       },
       fontFamily: {
-        serif: ['"Instrument Serif"', 'serif'],
-        sans: ['Almarai', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        serif: ['Fraunces', 'serif'],
+        sans: ['Manrope', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
     },
   },
