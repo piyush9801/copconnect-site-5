@@ -25,7 +25,7 @@ export default function WordsPullUp({
         return (
           <span
             key={i}
-            className="overflow-hidden inline-block mr-[0.2em] last:mr-0 relative leading-[0.85]"
+            className="overflow-hidden inline-block mr-[0.2em] last:mr-0 relative leading-[1] pb-[0.18em]"
           >
             <motion.span
               className="inline-block relative"
